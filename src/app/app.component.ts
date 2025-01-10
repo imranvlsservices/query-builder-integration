@@ -1,13 +1,13 @@
 import { CommonModule } from '@angular/common';
 import { Component, CUSTOM_ELEMENTS_SCHEMA, ɵrestoreComponentResolutionQueue } from '@angular/core';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { QueryBuilderClassNames, QueryBuilderConfig, QueryBuilderModule } from 'shout-angular-query-builder';
 
 @Component({
   selector: 'app-root',
   imports: [QueryBuilderModule,ReactiveFormsModule,CommonModule,
-    FormsModule,],
+    FormsModule,RouterModule],
   templateUrl: './app.component.html',
   schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this schema
   styleUrl: './app.component.scss'

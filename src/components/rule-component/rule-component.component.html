@@ -1,0 +1,22 @@
+<div class="rules-line">
+  <!-- Display the main condition -->
+  <div class="rule-item condition">
+    <button class="custom-button">{{ condition.condition }}</button>
+  </div>
+
+  <!-- Loop through rules -->
+  <div *ngFor="let rule of condition.rules" class="rule-item">
+    <ng-container *ngIf="isRule(rule)">
+      <!-- Render Rule as Button -->
+      <button class="custom-button">
+        {{ rule.field }} {{ rule.operator }} {{ rule.value }}
+      </button>
+    </ng-container>
+
+    <ng-container *ngIf="isNestedCondition(rule)">
+      <!-- Recursive Rendering for Nested Conditions -->
+      <app-rule-component [condition]="rule"></app-rule-component>
+    </ng-container>
+  </div>
+</div>
+

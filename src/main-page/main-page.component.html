@@ -1,0 +1,40 @@
+<div class="main-container">
+  <header class="main-header">
+    <h1>Start with Rule Engine</h1>
+  </header>
+<div class="row">
+  <section class="content">
+    <div class="row">
+      <div class="col-12">
+      <!-- Root Button -->
+      <div class="root-button">
+        <button class="cta-button">Get Started</button>
+        <div class="vertical-line"></div>
+        <!-- Vertical line connecting to the first rule button -->
+      </div>
+      </div>
+
+    </div>
+
+    <!-- Rule Buttons -->
+    <div
+      *ngIf="
+        ruleEngineJson && ruleEngineJson.if && ruleEngineJson.if.conditions
+      "
+    >
+      <div class="rules-line">
+        <ng-container>
+          <app-rule-component
+            [condition]="ruleEngineJson.if.conditions"
+          ></app-rule-component>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+</div>
+
+
+  <footer class="footer">
+    <p>&copy; 2025 Your App Name. All rights reserved.</p>
+  </footer>
+</div>
