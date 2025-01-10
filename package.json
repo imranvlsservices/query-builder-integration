@@ -22,7 +22,7 @@
     "bootstrap": "^4.6.2",
     "jquery": "^3.6.0",
     "rxjs": "~7.8.0",
-    "shout-angular-query-builder": "file:../Angular-QueryBuilder/dist/shout-angular-query-builder/shout-angular-query-builder-0.0.1.tgz",
+    "shout-angular-query-builder": "file:../query-builder-changes-library/dist/shout-angular-query-builder/shout-angular-query-builder-0.0.1.tgz",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },

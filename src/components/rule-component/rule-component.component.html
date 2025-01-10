@@ -1,14 +1,25 @@
 <div class="rules-line">
   <!-- Display the main condition -->
   <div class="rule-item condition">
-    <button class="custom-button">{{ condition.condition }}</button>
+    <!-- <button class="custom-button">{{ condition.condition }}</button> -->
+
+    <button
+      class="custom-button"
+      [ngClass]="getButtonClass(condition.condition)"
+    >
+      {{ condition.condition }}
+    </button>
   </div>
 
   <!-- Loop through rules -->
   <div *ngFor="let rule of condition.rules" class="rule-item">
     <ng-container *ngIf="isRule(rule)">
       <!-- Render Rule as Button -->
-      <button class="custom-button">
+      <!-- <button class="custom-button">
+        {{ rule.field }} {{ rule.operator }} {{ rule.value }}
+      </button> -->
+
+      <button class="custom-button" [ngClass]="getButtonClass(rule.field)">
         {{ rule.field }} {{ rule.operator }} {{ rule.value }}
       </button>
     </ng-container>
@@ -19,4 +30,3 @@
     </ng-container>
   </div>
 </div>
-

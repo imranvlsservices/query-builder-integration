@@ -10,10 +10,10 @@
 }
 
 .rule-item:not(:last-child)::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
-  right: -5px;
+  // right: -5px;
   transform: translateY(-50%);
   width: 10px; /* Line length */
   height: 2px; /* Line thickness */
@@ -34,4 +34,11 @@
 
 .custom-button:hover {
   background-color: #ffeecc; /* Slightly darker yellow on hover */
+}
+
+.andOr-button {
+  background-color: #f1f1f1; /* Custom background for "and" or "or" */
+  color: #007bff; /* Custom text color for "and" or "or" */
+  font-weight: bold; /* Custom font weight for "and" or "or" */
+  padding: 2px 16px !important;
 }
