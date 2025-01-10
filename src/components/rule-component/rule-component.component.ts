@@ -13,6 +13,7 @@ export class RuleComponentComponent implements OnInit {
   @Input() condition!: Conditions; // Input property
 
   ngOnInit(): void {
+    console.log('In Rule component data',this.condition);
   
   }
 

@@ -1,0 +1,9 @@
+<div class="rules-line">
+    <!-- Single Button for All Actions -->
+    <button class="custom-button">
+      <ng-container *ngFor="let action of actionData; let last = last">
+        {{ action.strategyCode }} {{ action.orderNo }}<br *ngIf="!last" />
+      </ng-container>
+    </button>
+  </div>
+  

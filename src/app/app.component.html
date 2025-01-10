@@ -18,4 +18,64 @@
 <button type="button" class="btn btn-success" (click)="submit()">Submit</button> -->
 
 
-<router-outlet></router-outlet>
+<div class="main-container">
+  <header class="main-header">
+    <h1>Start with Rule Engine</h1>
+  </header>
+<div class="row">
+  <section class="content">
+    <div class="row">
+      <div class="col-12">
+      <!-- Root Button -->
+      <div class="root-button">
+        <button class="cta-button">Get Started</button>
+        <div class="vertical-line"></div>
+        <!-- Vertical line connecting to the first rule button -->
+      </div>
+      </div>
+
+    </div>
+    <ng-container *ngIf="ruleEngineJson && ruleEngineJson.if">
+      <app-main-page [ifData]="ruleEngineJson.if"></app-main-page>
+    </ng-container>
+
+    <!-- <ng-container *ngIf="ruleEngineJson && ruleEngineJson.if.then && ruleEngineJson.if.then.if">
+      <app-main-page [ifData]="ruleEngineJson.if.then.if"></app-main-page>
+    </ng-container> -->
+
+    <!-- Rule Buttons -->
+    <!-- <div
+      *ngIf="
+        ruleEngineJson
+      "
+    >
+      <div class="rules-line">
+        <ng-container *ngIf="ruleEngineJson.if && ruleEngineJson.if.conditions">
+          <app-rule-component
+            [condition]="ruleEngineJson.if.conditions"
+          ></app-rule-component>
+        </ng-container>
+      </div>
+      <div class="rules-line">
+        <ng-container *ngIf="ruleEngineJson.if.then && ruleEngineJson.if.then.if  && ruleEngineJson.if.then.if.conditions">
+          <app-rule-component
+          [condition]="ruleEngineJson.if.then.if.conditions"
+        ></app-rule-component>
+        </ng-container>
+      </div>
+      <div class="rules-line">
+        <ng-container *ngIf="ruleEngineJson.if.else && ruleEngineJson.if.else.if  && ruleEngineJson.if.else.if.conditions">
+          <app-rule-component
+          [condition]="ruleEngineJson.if.else.if.conditions"
+        ></app-rule-component>
+        </ng-container>
+      </div>
+    </div> -->
+  </section>
+</div>
+
+
+  <footer class="footer">
+    <p>&copy; 2025 Your App Name. All rights reserved.</p>
+  </footer>
+</div>
