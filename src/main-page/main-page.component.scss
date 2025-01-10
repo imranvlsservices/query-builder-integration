@@ -23,14 +23,13 @@
   align-items: start;
   position: relative; /* For proper positioning of child elements */
 }
-
 .rules-line {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px; /* Distance between buttons */
   position: relative;
-  margin-top: 20px;
+  margin-top: 14px;
 }
 
 .rule-item {
@@ -38,7 +37,7 @@
 }
 
 .rule-item:not(:last-child)::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   right: -5px;
@@ -73,8 +72,13 @@
 }
 
 .root-button .vertical-line {
-  content: '';
+  content: "";
   width: 2px;
-  height: 30px; /* Adjust length to connect to the first button */
+  height: 35px; /* Adjust length to connect to the first button */
   background-color: #007bff;
+  margin-left: 25%;
+}
+
+.main-container {
+  background: url("https://www.toptal.com/designers/subtlepatterns/uploads/dot-grid.png") !important;
 }
