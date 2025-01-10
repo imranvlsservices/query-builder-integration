@@ -1,0 +1,9 @@
+<div class="rules-line">
+    <!-- Single Button for All Actions -->
+    <button class="custom-button">
+      <ng-container *ngFor="let payment of paymentProcess; let last = last">
+        {{ payment.paymentProcessorId }}<br *ngIf="!last" />
+      </ng-container>
+    </button>
+  </div>
+  

@@ -13,11 +13,8 @@ import { CommonModule } from '@angular/common';
 export class RuleComponentComponent implements OnInit {
   @Input() condition!: Conditions; // Input property
 
-  ngOnInit(): void {}
-
-  // Type guard to check if a rule is of type Rule
-  isRule(item: Rule | NestedCondition): item is Rule {
-    return (item as Rule).field !== undefined;
+  ngOnInit(): void {
+    console.log('In Rule component data', this.condition);
   }
 
   // Type guard to check if a rule is of type NestedCondition
