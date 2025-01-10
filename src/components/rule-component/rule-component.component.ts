@@ -26,6 +26,6 @@ export class RuleComponentComponent implements OnInit {
     if (value.toLowerCase() === 'and' || value.toLowerCase() === 'or') {
       return 'andOr-button'; // Apply special style for "and" or "or"
     }
-    return ''; // Default styling for other buttons
+    return ''; // Default styling for other button
   }
 }
