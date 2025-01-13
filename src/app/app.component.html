@@ -1,7 +1,7 @@
 
 <h2>Angular Query Builder</h2>
-<query-builder [(ngModel)]='query' [config]='config' [classNames]='classNames'>
-  <ng-container *queryButtonGroup="let ruleset; let addRule=addRule; let addRuleSet=addRuleSet; let removeRuleSet=removeRuleSet">
+<query-builder [(ngModel)]='query' [config]='config' [classNames]='classNames' [newData]="ruleEngineJson">
+  <ng-container *queryButtonGroup="let ruleset; let addRule=addRule; let addRuleSet=addRuleSet; let removeRuleSet=removeRuleSet" >
 <button
   type="button"
   class="btn btn-primary mr-2"

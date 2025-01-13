@@ -3,6 +3,8 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, ɵrestoreComponentResolutionQueue } 
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { QueryBuilderClassNames, QueryBuilderConfig, QueryBuilderModule } from 'shout-angular-query-builder';
+import { PaymentProcessorRules } from '../json-data-dto/rule-engine-dto';
+import { getPaymentProcessorRules } from '../json-data-dto/rule-engine-data';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +15,19 @@ import { QueryBuilderClassNames, QueryBuilderConfig, QueryBuilderModule } from '
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+
+
+
+  ruleEngineJson!: PaymentProcessorRules;
+
+
+  ngOnInit(): void {
+    debugger;
+    // Fetch the rule engine JSON using the reusable function
+    this.ruleEngineJson = getPaymentProcessorRules();
+    console.log(this.ruleEngineJson);
+  }
+
   title = 'angular-latest-integration';
   public queryCtrl: FormControl;
 
