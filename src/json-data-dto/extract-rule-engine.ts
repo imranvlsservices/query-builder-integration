@@ -6,6 +6,7 @@ export function extractRulesFromJson(json: any): RuleSet {
   const ruleSet: RuleSet = {
     condition: json.conditions?.condition || 'and', // Default to 'and' if condition is missing
     rules: [],
+    actions: undefined, // Initialize actions as undefined
     then: undefined,
     else: undefined,
   };
@@ -25,29 +26,66 @@ export function extractRulesFromJson(json: any): RuleSet {
     }
   });
 
+  // Handle actions in the current RuleSet
+  if (json.action) {
+    ruleSet.actions = json.action.map((action: any) => ({
+      orderNo: action.orderNo,
+      strategyCode: action.strategyCode,
+      paymentProcessors: action.paymentProcessors?.map((processor: any) => ({
+        paymentProcessorId: processor.paymentProcessorId,
+        priorityNo: processor.priorityNo,
+        weightPercentage: processor.weightPercentage,
+      })),
+    }));
+  }
+
   // Handle 'then' condition
   if (json.then) {
     if (json.then.if && json.then.if.conditions) {
-      // If 'then' contains nested conditions, extract them recursively
       ruleSet.then = extractRulesFromJson(json.then.if);
     } else if (json.then.action) {
-      // If 'then' contains an 'action' array, initialize an empty RuleSet
       ruleSet.then = {
-      } as any;
+        condition: 'and',
+        rules: [],
+        actions: json.then.action.map((action: any) => ({
+          orderNo: action.orderNo,
+          strategyCode: action.strategyCode,
+          paymentProcessors: action.paymentProcessors?.map((processor: any) => ({
+            paymentProcessorId: processor.paymentProcessorId,
+            priorityNo: processor.priorityNo,
+            weightPercentage: processor.weightPercentage,
+          })),
+        })),
+        then: undefined,
+        else: undefined,
+      };
     }
   }
 
   // Handle 'else' condition
   if (json.else) {
     if (json.else.if && json.else.if.conditions) {
-      // If 'else' contains nested conditions, extract them recursively
       ruleSet.else = extractRulesFromJson(json.else.if);
     } else if (json.else.action) {
-      // If 'else' contains an 'action' array, initialize an empty RuleSet
-      ruleSet.else = {} as any;
+      ruleSet.else = {
+        condition: 'and',
+        rules: [],
+        actions: json.else.action.map((action: any) => ({
+          orderNo: action.orderNo,
+          strategyCode: action.strategyCode,
+          paymentProcessors: action.paymentProcessors?.map((processor: any) => ({
+            paymentProcessorId: processor.paymentProcessorId,
+            priorityNo: processor.priorityNo,
+            weightPercentage: processor.weightPercentage,
+          })),
+        })),
+        then: undefined,
+        else: undefined,
+      };
     }
   }
 
   return ruleSet;
 }
+
 
