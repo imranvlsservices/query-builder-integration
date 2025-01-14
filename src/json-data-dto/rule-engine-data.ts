@@ -4,7 +4,7 @@ export function getPaymentProcessorRules(): PaymentProcessorRules {
     return {
       if: {
         conditions: {
-          condition: "and",
+          condition: "or",
           rules: [
             {
               field: "requestAmount",

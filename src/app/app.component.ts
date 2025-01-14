@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, ɵrestoreComponentResolutionQueue } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ɵrestoreComponentResolutionQueue, ɵɵsetComponentScope } from '@angular/core';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { QueryBuilderClassNames, QueryBuilderConfig, QueryBuilderModule } from 'shout-angular-query-builder';
+import { QueryBuilderClassNames, QueryBuilderConfig, QueryBuilderModule, RuleSet } from 'shout-angular-query-builder';
 import { PaymentProcessorRules } from '../json-data-dto/rule-engine-dto';
 import { getPaymentProcessorRules } from '../json-data-dto/rule-engine-data';
+import { extractRulesFromJson } from '../json-data-dto/extract-rule-engine';
 
 @Component({
   selector: 'app-root',
@@ -19,13 +20,12 @@ export class AppComponent {
 
 
   ruleEngineJson!: PaymentProcessorRules;
-
+  setData = {} as any;
 
   ngOnInit(): void {
-    debugger;
     // Fetch the rule engine JSON using the reusable function
     this.ruleEngineJson = getPaymentProcessorRules();
-    console.log(this.ruleEngineJson);
+    this.setData = extractRulesFromJson(this.ruleEngineJson.if);
   }
 
   title = 'angular-latest-integration';
@@ -59,11 +59,12 @@ export class AppComponent {
     inputControlSize: 'col-auto'
   };
 
-  public query = {
+  public query : RuleSet = {
     condition: 'and',
     rules: [
-
-    ]
+    ],
+    then:{} as any,
+    else:{} as any
   };
 
   public entityConfig: QueryBuilderConfig = {
@@ -114,6 +115,9 @@ export class AppComponent {
           {name: 'Female', value: 'f'}
         ]
       },
+      requestAmount: {name: 'RequestAmount', type: 'number'},
+      requestCurrencyCode: {name: 'RequestCurrencyCode', type: 'string'},
+      metadata: {name: 'metadata', type: 'string'},
       name: {name: 'Name', type: 'string'},
       notes: {name: 'Notes', type: 'textarea', operators: ['=', '!=']},
       educated: {name: 'College Degree?', type: 'boolean'},
