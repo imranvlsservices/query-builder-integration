@@ -26,6 +26,7 @@ export class AppComponent {
     // Fetch the rule engine JSON using the reusable function
     this.ruleEngineJson = getPaymentProcessorRules();
     this.setData = extractRulesFromJson(this.ruleEngineJson.if);
+    
   }
 
   title = 'angular-latest-integration';
