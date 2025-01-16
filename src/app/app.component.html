@@ -1,22 +1,42 @@
-
-<h2>Angular Query Builder</h2>
-<query-builder [(ngModel)]='query'  [config]='config' [classNames]='classNames' [newData]="setData">
-  <ng-container *queryButtonGroup="let ruleset; let addRule=addRule; let addRuleSet=addRuleSet; let removeRuleSet=removeRuleSet" >
+<div class="query-builder-container" style="margin-top:20px">
+  <query-builder
+    [(ngModel)]="query"
+    [config]="config"
+    [classNames]="classNames"
+    [newData]="setData"
+    (setDataChange)="onSetDataChange($event)"
+  >
+    <ng-container
+      *queryButtonGroup="
+        let ruleset;
+        let addRule = addRule;
+        let addRuleSet = addRuleSet;
+        let removeRuleSet = removeRuleSet
+      "
+    >
+      <button
+        type="button"
+        class="btn btn-primary mr-2"
+        (click)="addRule()"
+      >
+        + Rule
+      </button>
+      <button
+        type="button"
+        class="btn btn-secondary mr-2"
+        (click)="addRuleSet()"
+      >
+        + Ruleset
+      </button>
+    </ng-container>
+  </query-builder>
+</div>
 <button
   type="button"
-  class="btn btn-primary mr-2"
-  (click)="addRule()"
+  class="btn btn-success"
+  (click)="submit()"
+  style="margin:20px"
 >
-  + Rule
-</button>    <button type="button" class="btn btn-secondary mr-2
-    " (click)="addRuleSet()">+ Ruleset</button>
-
-    
-  </ng-container>
-
-
-</query-builder>
-<button type="button" class="btn btn-success" (click)="submit()">Submit</button>
-
-
+  Submit
+</button>
 

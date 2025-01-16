@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, ɵrestoreComponentResolutionQueue, ɵɵsetComponentScope } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, EventEmitter, Output, ɵrestoreComponentResolutionQueue, ɵɵsetComponentScope } from '@angular/core';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { QueryBuilderClassNames, QueryBuilderConfig, QueryBuilderModule, RuleSet } from 'shout-angular-query-builder';
@@ -22,11 +22,17 @@ export class AppComponent {
   ruleEngineJson!: PaymentProcessorRules;
   setData = {} as any;
 
+
   ngOnInit(): void {
     // Fetch the rule engine JSON using the reusable function
     this.ruleEngineJson = getPaymentProcessorRules();
     this.setData = extractRulesFromJson(this.ruleEngineJson.if);
     
+  }
+
+  onSetDataChange(updatedData: any): void {
+    console.log('Data updated in child:', updatedData);
+    // Perform additional logic here
   }
 
   title = 'angular-latest-integration';
@@ -160,8 +166,8 @@ export class AppComponent {
   }
 
   submit(){
-    console.log(this.query);  
-
+    console.log(this.setData);  
+    console.log('query log',this.query);  
     const output = {
       if: {
         conditions: {

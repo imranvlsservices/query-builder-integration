@@ -11,4 +11,12 @@
   .q-remove-button i {
     color: #dc3545; /* Red icon color */
   }
-  
+  body {
+    overflow-y: auto;
+    height: 100%;
+  }
+
+  body.modal-open {
+    overflow: visible !important;
+    padding-right: 0 !important; /* Reset padding added for scrollbar compensation */
+  }
